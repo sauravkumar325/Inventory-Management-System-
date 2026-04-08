@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuildStock Materials</title>
+    <link rel="stylesheet" href="material.css">
+</head>
+
+<body>
+
+    <div class="layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="brand" id="brand">
+                <div class="brand-icon" id="brandIcon">🏗</div>
+                <h2 class="brand-name" id="brandName">BuildStock</h2>
+            </div>
+
+            <nav class="side-nav" id="sideNav">
+                <a href="../dashboard/dashboard.html" class="nav-link">Dashboard</a>
+                <a href="../material/material.html" class="nav-link active">Materials</a>
+                <a href="../stockin/stockin.html" class="nav-link">Stock In</a>
+                <a href="../stockout/stockout.html" class="nav-link">Stock Out</a>
+                <a href="../report/report.html" class="nav-link">Reports</a>
+                <a href="../login/login.html" class="nav-link">Logout</a>
+            </nav>
+        </aside>
+
+        <!-- Main -->
+        <main class="main" id="mainContent">
+
+            <!-- Topbar -->
+            <header class="topbar" id="topbar">
+                <div class="topbar-left">
+                    <h1 class="page-title" id="pageTitle">Materials</h1>
+                    <p class="page-subtitle" id="pageSubtitle">
+                        View and manage all construction materials.
+                    </p>
+                </div>
+
+                <div class="user-box" id="userBox">Admin</div>
+            </header>
+
+            <!-- Summary Cards -->
+            <section class="card-grid" id="materialCards">
+                <div class="card" id="cardTotal">
+                    <div class="card-head">
+                        <div class="card-icon yellow-icon">📦</div>
+                        <span class="card-tag green-text"></span>
+                    </div>
+                    <h2 class="card-number" id="totalMaterials"></h2>
+                    <p class="card-label">Total Materials</p>
+                </div>
+
+                <div class="card" id="cardAvailable">
+                    <div class="card-head">
+                        <div class="card-icon blue-icon">✅</div>
+                        <span class="card-tag green-text"></span>
+                    </div>
+                    <h2 class="card-number" id="availableItems"></h2>
+                    <p class="card-label">Available Items</p>
+                </div>
+
+                <div class="card" id="cardLow">
+                    <div class="card-head">
+                        <div class="card-icon red-icon">⚠</div>
+                        <span class="card-tag red-text"></span>
+                    </div>
+                    <h2 class="card-number" id="lowStockItems"></h2>
+                    <p class="card-label">Low Stock Items</p>
+                </div>
+
+                <div class="card" id="cardOut">
+                    <div class="card-head">
+                        <div class="card-icon gray-icon">❌</div>
+                        <span class="card-tag red-text"></span>
+                    </div>
+                    <h2 class="card-number" id="outStockItems"></h2>
+                    <p class="card-label">Out of Stock</p>
+                </div>
+            </section>
+
+            <!-- Materials Section -->
+            <section class="table-box" id="materialsSection">
+                <div class="table-top">
+                    <div>
+                        <h2 class="section-title">Materials List</h2>
+                        <p class="section-text">Manage your material records here.</p>
+                    </div>
+
+                    <button class="add-btn" id="addMaterialBtn">+ Add Material</button>
+                </div>
+
+                <div class="form-box" id="formBox">
+                    <h3>Add Material</h3>
+
+                    <div class="form-grid">
+                        <input type="text" id="matId" placeholder="Material ID">
+                        <input type="text" id="matName" placeholder="Material Name">
+                        <input type="text" id="matCategory" placeholder="Category">
+                        <input type="text" id="matUnit" placeholder="Unit">
+                        <input type="number" id="matQty" placeholder="Quantity">
+                        <input type="number" id="matPrice" placeholder="Price">
+                    </div>
+
+                    <div class="form-btn-row">
+                        <button type="button" id="saveMaterialBtn">Save Material</button>
+                    </div>
+                </div>
+
+                <div class="search-row">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search material name...">
+                </div>
+
+                <div class="table-wrap">
+                    <table class="material-table" id="materialTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Unit</th>
+                                <th>Qty</th>
+                                <th>Price</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="materialTableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+    </div>
+    <script src="material.js"></script>
+</body>
+
+</html>

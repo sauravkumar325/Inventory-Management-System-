@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuildStock Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+    <div class="dashboard">
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">🏗</div>
+                <h2>BuildStock</h2>
+            </div>
+
+            <ul class="menu">
+                <li><a href="../dashboard/dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="../material/material.html">Materials</a></li>
+                <li><a href="../stockin/stockin.html">Stock In</a></li>
+                <li><a href="../stockout/stockout.html">Stock Out</a></li>
+                <li><a href="../report/report.html">Reports</a></li>
+                <li><a href="../login/login.html">Logout</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+
+            <!-- Topbar -->
+            <div class="topbar">
+                <h1>Dashboard</h1>
+                <div class="user-box">Welcome, Admin</div>
+            </div>
+
+            <!-- Welcome Section -->
+            <div class="welcome-box">
+                <h2>Inventory Dashboard</h2>
+                <p>Overview of your construction materials stock</p>
+            </div>
+
+            <!-- Summary Cards -->
+            <div class="cards">
+                <div class="card">
+                    <div class="card-top">
+                        <div class="card-icon yellow">🏗</div>
+                    </div>
+                    <h2 id="totalMaterials">0</h2>
+                    <p>Total Materials</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-top">
+                        <div class="card-icon blue">📋</div>
+                    </div>
+                    <h2 id="lowStockItems">0</h2>
+                    <p>Low Stock Items</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-top">
+                        <div class="card-icon green-icon">⬆</div>
+                    </div>
+                    <h2 id="stockInCount">0</h2>
+                    <p>Stock In</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-top">
+                        <div class="card-icon red">⬇</div>
+                    </div>
+                    <h2 id="stockOutCount">0</h2>
+                    <p>Stock Out</p>
+                </div>
+            </div>
+
+            <!-- Recent Materials Table -->
+            <div class="table-section">
+                <h2>Recent Materials</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Material Name</th>
+                            <th>Category</th>
+                            <th>Quantity</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recentMaterialsTable">
+                        <!-- Data will come from JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

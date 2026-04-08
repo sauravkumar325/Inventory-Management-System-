@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuildStock Stock In</title>
+    <link rel="stylesheet" href="stockin.css">
+</head>
+
+<body>
+
+    <div class="layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="brand" id="brand">
+                <div class="brand-icon" id="brandIcon">🏗️</div>
+                <h2 class="brand-name" id="brandName">BuildStock</h2>
+            </div>
+
+            <nav class="side-nav" id="sideNav">
+                <a href="../dashboard/dashboard.html" class="nav-link">Dashboard</a>
+                <a href="../material/material.html" class="nav-link">Materials</a>
+                <a href="../stockin/stockin.html" class="nav-link active">Stock In</a>
+                <a href="../stockout/stockout.html" class="nav-link">Stock Out</a>
+                <a href="../report/report.html" class="nav-link">Reports</a>
+                <a href="../login/login.html" class="nav-link">Logout</a>
+            </nav>
+        </aside>
+
+        <!-- Main -->
+        <main class="main" id="mainContent">
+
+            <!-- Topbar -->
+            <header class="topbar" id="topbar">
+                <div class="topbar-left">
+                    <h1 class="page-title" id="pageTitle">Stock In</h1>
+                    <p class="page-subtitle" id="pageSubtitle">
+                        Add and track incoming construction materials.
+                    </p>
+                </div>
+
+                <div class="user-box" id="userBox">Admin</div>
+            </header>
+
+            <!-- Cards -->
+            <section class="card-grid" id="stockInCards">
+                <div class="card" id="cardTodayIn">
+                    <div class="card-head">
+                        <div class="card-icon yellow-icon">📥</div>
+                        <span class="card-tag green-text"></span>
+                    </div>
+                    <h2 class="card-number" id="todayStockIn">0</h2>
+                    <p class="card-label">Today Stock In</p>
+                </div>
+
+                <div class="card" id="cardTotalIn">
+                    <div class="card-head">
+                        <div class="card-icon blue-icon">📦</div>
+                        <span class="card-tag green-text"></span>
+                    </div>
+                    <h2 class="card-number" id="totalStockIn">0</h2>
+                    <p class="card-label">Total Stock In</p>
+                </div>
+
+                <div class="card" id="cardMaterialsAdded">
+                    <div class="card-head">
+                        <div class="card-icon green-icon">🧱</div>
+                        <span class="card-tag green-text"></span>
+                    </div>
+                    <h2 class="card-number" id="materialsAdded">0</h2>
+                    <p class="card-label">Materials Added</p>
+                </div>
+
+                <div class="card" id="cardRecentEntry">
+                    <div class="card-head">
+                        <div class="card-icon gray-icon">📝</div>
+                        <span class="card-tag blue-text"></span>
+                    </div>
+                    <h2 class="card-number" id="recentEntryCount">0</h2>
+                    <p class="card-label">Recent Entries</p>
+                </div>
+            </section>
+
+            <!-- Form + Table -->
+            <section class="stock-box" id="stockInSection">
+                <div class="section-top">
+                    <div>
+                        <h2 class="section-title">Stock In Entry</h2>
+                        <p class="section-text">Record new material stock received.</p>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <form class="stock-form" id="stockInForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="materialName">Material Name</label>
+                            <input type="text" id="materialName" class="input-box" placeholder="Enter material name">
+                        </div>
+                        <div class="form-group">
+                            <label for="materialCategory">Category</label>
+                            <input type="text" id="materialCategory" class="input-box" placeholder="Enter category">
+                        </div>
+                        <div class="form-group">
+                            <label for="stockQty">Quantity</label>
+                            <input type="number" id="stockQty" class="input-box" placeholder="Enter quantity">
+                        </div>
+                        <div class="form-group">
+                            <label for="stockUnit">Unit</label>
+                            <input type="text" id="stockUnit" class="input-box" placeholder="Bag / Ton / Piece">
+                        </div>
+                        <div class="form-group">
+                            <label for="stockDate">Date</label>
+                            <input type="date" id="stockDate" class="input-box">
+                        </div>
+                        <div class="form-group">
+                            <label for="stockNote">Note</label>
+                            <input type="text" id="stockNote" class="input-box" placeholder="Optional note">
+                        </div>
+                    </div>
+                    <div class="form-btn-row">
+                        <button type="button" class="main-btn" id="saveStockInBtn">Save Entry</button>
+                        <!-- <button type="reset" class="sub-btn" id="resetStockInBtn">Reset</button> -->
+                    </div>
+                </form>
+                <!-- Search -->
+                <div class="search-row">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search stock in records...">
+                </div>
+                <!-- Table -->
+                <div class="table-wrap">
+                    <table class="stock-table" id="stockInTable">
+                        <thead>
+                            <tr>
+                                <th>Entry ID</th>
+                                <th>Material Name</th>
+                                <th>Category</th>
+                                <th>Qty</th>
+                                <th>Unit</th>
+                                <th>Date</th>
+                                <th>Note</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="stockInTableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+<script src="stockin.js"></script>
+</body>
+</html>

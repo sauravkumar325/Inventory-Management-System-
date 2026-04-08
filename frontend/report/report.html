@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuildStock Reports</title>
+    <link rel="stylesheet" href="report.css">
+</head>
+<body>
+
+    <div class="layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="brand" id="brand">
+                <div class="brand-icon" id="brandIcon">🏗️</div>
+                <h2 class="brand-name" id="brandName">BuildStock</h2>
+            </div>
+
+            <nav class="side-nav" id="sideNav">
+                <a href="../dashboard/dashboard.html" class="nav-link">Dashboard</a>
+                <a href="../material/material.html" class="nav-link">Materials</a>
+                <a href="../stockin/stockin.html" class="nav-link">Stock In</a>
+                <a href="../stockout/stockout.html" class="nav-link">Stock Out</a>
+                <a href="../report/report.html" class="nav-link active">Reports</a>
+                <a href="../login/login.html" class="nav-link">Logout</a>
+            </nav>
+        </aside>
+
+        <!-- Main -->
+        <main class="main" id="mainContent">
+
+            <!-- Topbar -->
+            <header class="topbar" id="topbar">
+                <div class="topbar-left">
+                    <h1 class="page-title" id="pageTitle">Reports</h1>
+                    <p class="page-subtitle" id="pageSubtitle">
+                        View inventory reports and stock movement summary.
+                    </p>
+                </div>
+
+                <div class="user-box" id="userBox">Admin</div>
+            </header>
+
+            <!-- Summary Cards -->
+            <section class="card-grid" id="reportCards">
+                <div class="card" id="cardTotalMaterials">
+                    <div class="card-head">
+                        <div class="card-icon yellow-icon">📦</div>
+                        <span class="card-tag green-text">+8</span>
+                    </div>
+                    <h2 class="card-number" id="reportTotalMaterials">120</h2>
+                    <p class="card-label">Total Materials</p>
+                </div>
+
+                <div class="card" id="cardStockIn">
+                    <div class="card-head">
+                        <div class="card-icon green-icon">📥</div>
+                        <span class="card-tag green-text">+12</span>
+                    </div>
+                    <h2 class="card-number" id="reportStockIn">180</h2>
+                    <p class="card-label">Total Stock In</p>
+                </div>
+
+                <div class="card" id="cardStockOut">
+                    <div class="card-head">
+                        <div class="card-icon red-icon">📤</div>
+                        <span class="card-tag red-text">+6</span>
+                    </div>
+                    <h2 class="card-number" id="reportStockOut">145</h2>
+                    <p class="card-label">Total Stock Out</p>
+                </div>
+
+                <div class="card" id="cardLowStock">
+                    <div class="card-head">
+                        <div class="card-icon blue-icon">⚠️</div>
+                        <span class="card-tag blue-text">Low</span>
+                    </div>
+                    <h2 class="card-number" id="reportLowStock">18</h2>
+                    <p class="card-label">Low Stock Items</p>
+                </div>
+            </section>
+
+            <!-- Report Section -->
+            <section class="report-box" id="reportSection">
+                <div class="section-top">
+                    <div>
+                        <h2 class="section-title">Inventory Report</h2>
+                        <p class="section-text">Check stock summary and material status.</p>
+                    </div>
+                </div>
+
+                <!-- Filter Row -->
+                <div class="filter-row" id="filterRow">
+                    <div class="filter-group">
+                        <label for="fromDate">From Date</label>
+                        <input type="date" id="fromDate" class="input-box">
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="toDate">To Date</label>
+                        <input type="date" id="toDate" class="input-box">
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="reportType">Report Type</label>
+                        <select id="reportType" class="input-box">
+                            <option value="">Select Report</option>
+                            <option value="all">All</option>
+                            <option value="stockin">Stock In</option>
+                            <option value="stockout">Stock Out</option>
+                            <option value="lowstock">Low Stock</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-btns">
+                        <button class="main-btn" id="generateReportBtn">Generate</button>
+                        <button class="sub-btn" id="resetReportBtn">Reset</button>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-row" id="actionRow">
+                    <button class="small-btn" id="printBtn">Print</button>
+                    <button class="small-btn" id="exportBtn">Export</button>
+                </div>
+
+                <!-- Search -->
+                <div class="search-row">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search report records...">
+                </div>
+
+                <!-- Table -->
+                <div class="table-wrap">
+                    <table class="report-table" id="reportTable">
+                        <thead>
+                            <tr>
+                                <th>Material ID</th>
+                                <th>Material Name</th>
+                                <th>Category</th>
+                                <th>Available Qty</th>
+                                <th>Stock In</th>
+                                <th>Stock Out</th>
+                                <th>Status</th>
+                                <th>Last Updated</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reportTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+    </div>
+<script src="report.js"></script>
+</body>
+</html>
