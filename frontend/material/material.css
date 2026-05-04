@@ -277,6 +277,24 @@ body {
     border-color: #f5ab00;
 }
 
+.qty-helper {
+    margin-bottom: 16px;
+    font-size: 14px;
+    color: #64748b;
+}
+
+.qty-helper.low-stock-text {
+    color: #b45309;
+}
+
+.qty-helper.available-text {
+    color: #15803d;
+}
+
+.qty-helper.out-stock-text {
+    color: #b91c1c;
+}
+
 .form-btn-row {
     margin-bottom: 18px;
 }

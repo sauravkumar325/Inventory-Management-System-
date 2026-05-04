@@ -6,10 +6,12 @@ let matCategory = document.getElementById("matCategory");
 let matUnit = document.getElementById("matUnit");
 let matQty = document.getElementById("matQty");
 let matPrice = document.getElementById("matPrice");
+let qtyHelper = document.getElementById("qtyHelper");
 
 let saveMaterialBtn = document.getElementById("saveMaterialBtn");
 let searchInput = document.getElementById("searchInput");
 let materialTableBody = document.getElementById("materialTableBody");
+const LOW_STOCK_LIMIT = 10;
 
 function saveToLocalStorage() {
     localStorage.setItem("materials", JSON.stringify(materials));
@@ -22,6 +24,7 @@ function clearInputs() {
     matUnit.value = "";
     matQty.value = "";
     matPrice.value = "";
+    updateQtyHelper();
 }
 
 function getStatus(qty) {
@@ -29,11 +32,45 @@ function getStatus(qty) {
 
     if (qty === 0) {
         return "Out of Stock";
-    } else if (qty < 10) {
+    } else if (qty < LOW_STOCK_LIMIT) {
         return "Low Stock";
     } else {
         return "Available";
     }
+}
+
+function updateQtyHelper() {
+    let qtyValue = matQty.value.trim();
+
+    qtyHelper.classList.remove("low-stock-text", "available-text", "out-stock-text");
+
+    if (qtyValue === "") {
+        qtyHelper.innerText = "Enter quantity to see low stock guidance.";
+        return;
+    }
+
+    let qty = Number(qtyValue);
+
+    if (Number.isNaN(qty) || qty < 0) {
+        qtyHelper.innerText = "Please enter a valid quantity.";
+        return;
+    }
+
+    if (qty === 0) {
+        qtyHelper.innerText = `This will be out of stock. Add ${LOW_STOCK_LIMIT} more to reach available stock.`;
+        qtyHelper.classList.add("out-stock-text");
+        return;
+    }
+
+    if (qty < LOW_STOCK_LIMIT) {
+        let neededQty = LOW_STOCK_LIMIT - qty;
+        qtyHelper.innerText = `This quantity will be low stock. Add ${neededQty} more to get out of low stock.`;
+        qtyHelper.classList.add("low-stock-text");
+        return;
+    }
+
+    qtyHelper.innerText = "This quantity will be in available stock.";
+    qtyHelper.classList.add("available-text");
 }
 
 function updateCards() {
@@ -47,7 +84,7 @@ function updateCards() {
 
         if (qty === 0) {
             out++;
-        } else if (qty < 10) {
+        } else if (qty < LOW_STOCK_LIMIT) {
             low++;
         } else {
             available++;
@@ -172,7 +209,9 @@ function searchMaterial() {
 }
 
 saveMaterialBtn.addEventListener("click", addMaterial);
+matQty.addEventListener("input", updateQtyHelper);
 searchInput.addEventListener("keyup", searchMaterial);
 
 displayMaterials();
 updateCards();
+updateQtyHelper();
