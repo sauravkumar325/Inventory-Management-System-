@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from database import engine, Base, SessionLocal
+import os
 import models
 import schemas
 
@@ -10,13 +11,20 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="BuildStock Backend")
 
+frontend_url = os.getenv("FRONTEND_URL")
+allowed_origins = [
+    "https://buildstock-0ypy.onrender.com",
+    "http://127.0.0.1:5500",
+    "http://localhost:5500",
+]
+
+if frontend_url:
+    allowed_origins.append(frontend_url.rstrip("/"))
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "https://buildstock-0ypy.onrender.com",
-        "http://127.0.0.1:5500",
-        "http://localhost:5500"
-    ],
+    allow_origins=allowed_origins,
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
